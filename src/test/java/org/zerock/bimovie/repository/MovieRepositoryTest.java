@@ -34,7 +34,7 @@ class MovieRepositoryTest {
         log.info(movie.getMno());
     }*/
 
-    @Test
+    /*@Test
     @Transactional
     @Commit
     public void testAddPoster() {
@@ -42,6 +42,18 @@ class MovieRepositoryTest {
         Movie movie = movieRepository.getOne(1L); //데이터베이스에 존재하는 영화 번호
 
         movie.addPoster(Poster.builder().fname("극한직업포스터3.jpg").build()); //새로운 Poster 객체
+
+        movieRepository.save(movie);
+    }*/
+
+    @Test
+    @Transactional
+    @Commit
+    public void testRemovePoster() {
+
+        Movie movie = movieRepository.getOne(1L);
+
+        movie.removePoster(2L);
 
         movieRepository.save(movie);
     }
