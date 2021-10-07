@@ -3,13 +3,15 @@ package org.zerock.bimovie.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString(exclude = "posterList")
 @Table(name = "tbl_movie")
 public class Movie extends BaseEntity {
 
@@ -19,4 +21,6 @@ public class Movie extends BaseEntity {
 
     private String title;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    private List<Poster> posterList = new ArrayList<>();
 }
